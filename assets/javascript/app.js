@@ -4,9 +4,11 @@ var time = 10;
 var correct = 0;
 var incorrect = 0;
 var intervalId;
+var innerAnswer = [];
+
 
 var questionArray = ["who ?", "what?", "where?", "when?", "how?"];
-var answerArray = ["me", "sea turtle", "hawaii", "last week", "flew"];
+var answerArray = [["me", "you", "him"], ["sea turtle", "whale", "dolphin"], ["hawaii", "oregon", "greece"], ["last week", "yesterday", "last year"], ["flew", "boat", "car"]];
 
 $(".btn").on("click", run);
 
@@ -16,16 +18,26 @@ function run() {
     addQuestionAnswer(questionArray, answerArray);
 }
 
-function addQuestionAnswer(x,z) {
+function addQuestionAnswer(x, z) {
     for (var i = 0; i < x.length; i++) {
+        var questionAnswerContainer = $("<div>");
         var question = $("<div>" + x[i] + "</div>");
-        var answer = $("<div>" + z[i] + "</div>");
+        innerAnswer = z[i];
+        console.log(innerAnswer);
+        console.log(innerAnswer[0]);
+        var answer1 = $('<input type="radio" name="rbtnCount">' + innerAnswer[0] + '</input>');
+        var answer2 = $('<input type="radio" name="rbtnCount">' + innerAnswer[1] + '</input>');
+        var answer3 = $('<input type="radio" name="rbtnCount">' + innerAnswer[2] + '</input>');
         question.addClass("question");
-        answer.addClass("answer");
-        $("#question-area").append(question, answer);
+        answer1.addClass("answer");
+        answer2.addClass("answer");
+        answer3.addClass("answer");
+        $("#question-area").append(question);
+        $("#answer-area").append(answer1, answer2, answer3);
     }
 };
 
+//'<input type="radio" name="rbtnCount">' + z[i] + '</input>'
 
 
 //  The countdown function.
