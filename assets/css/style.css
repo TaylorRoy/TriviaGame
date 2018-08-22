@@ -1,0 +1,17 @@
+#title {
+background-color: blue;
+text-align: center;
+}
+
+#timer-area {
+    text-align: center;
+}
+
+#question-area {
+    text-align: center;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+}
