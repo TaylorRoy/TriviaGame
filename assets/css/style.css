@@ -1,5 +1,4 @@
 #title {
-background-color: blue;
 text-align: center;
 }
 
@@ -14,4 +13,27 @@ text-align: center;
 .btn {
     display: block;
     margin: 0 auto;
+    background-color:#ff6633;
 }
+
+.container {
+    text-align: center; 
+}
+
+.container-results {
+    padding-top: 155px;
+margin-top: 50px;
+padding-bottom: 123px;
+background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    text-align: center;
+}
+
+.background-image {
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;   
+}
+
+
