@@ -1,49 +1,59 @@
 //!!!!!!!!!!!!!!!!!!!Global variables!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+//organize as 
+//question= string
+//answers = []
+//correct answer= sting
+
 var time = 10;
 var correct = 0;
 var incorrect = 0;
 var intervalId;
-var innerAnswer = [];
 
 
-var questionArray = ["who ?", "what?", "where?", "when?", "how?"];
-var answerArray = [["me", "you", "him"], ["sea turtle", "whale", "dolphin"], ["hawaii", "oregon", "greece"], ["last week", "yesterday", "last year"], ["flew", "boat", "car"]];
+
+var questionArray = ["who?", "what?", "where?", "when?", "how?"];
+
+//who answers
+var answerArray1 = ["me", "you", "him"];
+
+//what answers
+var answerArray2 = ["sea turtle", "whale", "dolphin"];
+
+var answerArray3 = ["hawaii", "oregon", "greece"];
+
+var answerArray4 = ["last week", "yesterday", "last year"];
+
+var answerArray5 = ["flew", "boat", "car"];
 
 $(".btn").on("click", run);
 
 function run() {
     clearInterval(intervalId);
     intervalId = setInterval(countdown, 1000);
-    addQuestionAnswer(questionArray, answerArray);
+    addQuestion(questionArray);
+    addAnswer(answerArray1);
 }
 
-function addQuestionAnswer(x, z) {
+function addQuestion(x) {
     for (var i = 0; i < x.length; i++) {
-        var questionAnswerContainer = $("<div>");
         var question = $("<div>" + x[i] + "</div>");
-        innerAnswer = z[i];
-        console.log(innerAnswer);
-        console.log(innerAnswer[0]);
-        var answer1 = $('<input type="radio" name="rbtnCount">' + innerAnswer[0] + '</input>');
-        var answer2 = $('<input type="radio" name="rbtnCount">' + innerAnswer[1] + '</input>');
-        var answer3 = $('<input type="radio" name="rbtnCount">' + innerAnswer[2] + '</input>');
         question.addClass("question");
-        answer1.addClass("answer");
-        answer2.addClass("answer");
-        answer3.addClass("answer");
-        $("#question-area").append(question);
-        $("#answer-area").append(answer1, answer2, answer3);
+        $("#question-area").append(question);    
     }
 };
 
-//'<input type="radio" name="rbtnCount">' + z[i] + '</input>'
-
+function addAnswer(z) {
+    for (var i = 0; i < z.length; i++) {
+        var answer = $('<input type="radio" name="rbtnCount">' + z[i] + '</input>');
+        answer.addClass("answer");
+        $("#answer-area").append(answer);
+    }
+};
 
 //  The countdown function.
 
 function countdown() {
-
 
     //  Decrease number by one.
     time--;
@@ -51,14 +61,13 @@ function countdown() {
     //  Show the number in the #timer-area tag.
     $("#timer-area").html("<h2>" + time + "</h2>");
 
-
-    //  Once number hits zero...
+    //if time-0 run stop()
     if (time === 0) {
 
-        //  ...run the stop function.
+        //calls stop()
         stop();
 
-        //  Alert the user that time is up.
+        //Alert the user that time is up.
         alert("Time Up!");
     }
 }
