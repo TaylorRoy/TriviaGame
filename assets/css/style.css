@@ -1,9 +1,11 @@
-#title {
-text-align: center;
-}
 
-#timer-area {
+
+#title {
     text-align: center;
+    font-family: 'Monofett', cursive;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    font-size: 90px;
 }
 
 #question-area {
@@ -17,14 +19,34 @@ text-align: center;
 }
 
 .container {
-    text-align: center; 
+    text-align: center;
+     
+}
+
+.timer-area {
+    font-size: 30px;
+    margin-top: 11px;
+    padding-bottom: 15px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    margin-left: 506px;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    background-color: red; 
 }
 
 .container-results {
     padding-top: 155px;
-margin-top: 50px;
-padding-bottom: 123px;
-background-repeat: no-repeat;
+    margin-top: 50px;
+    padding-bottom: 123px;
+    background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;
     text-align: center;
@@ -34,6 +56,10 @@ background-repeat: no-repeat;
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;   
+}
+
+.done-button {
+    margin-top: 20px;
 }
 
 

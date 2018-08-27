@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title id="trivia-title">Trivia Game</title>
+    <title id="trivia-title">UTAH TRIVIA</title>
 
 
     <!--links bootstrap to html file-->
@@ -13,7 +13,7 @@
         crossorigin="anonymous">
 
     <!--link to Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Diplomata+SC|Fredericka+the+Great|Rye|Vast+Shadow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Faster+One|Monofett" rel="stylesheet"> 
 
     <!--links css file to html file-->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -26,28 +26,26 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 id="title">Trivia Game</h1>
+                <h1 id="title">UTAH TRIVIA</h1>
             </div>
         </div>
 
 
         <div class="row">
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary btn-lg">CLICK TO START!</button>
+            <div class="col-lg-12" style=p adding-top:9px; padding-bottom:17px>
+                <button type="button" id="start-button" class="btn btn-primary btn-lg">CLICK TO START!</button>
                 <!--make button disapper after being clicked-->
             </div>
         </div>
 
-
-
-        <div class="background-image" style="background-image:url(./assets/images/utah_outline.jpg)">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 id="timer-area"></h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="timer-holder">
                 </div>
             </div>
+        </div>
 
+        <!-- <div class="background-image" style="background-image:url(./assets/images/utah_outline.jpg)"> -->
             <div class="row">
                 <div class="col-lg-12">
                     <form>
@@ -57,12 +55,8 @@
             </div>
         </div>
     </div>
-
     <div class="container-results">
-        
     </div>
-
-
 
     <!--links JQuery to HTML file-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

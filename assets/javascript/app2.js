@@ -1,11 +1,9 @@
 //!!!!!!!!!!!!!!!!!!!Global variables!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //global variables 
-var time = 10;
-//var answers = [];
+var time = 1000;
 var correct = 0;
 var incorrect = 0;
-
 var intervalId;
 
 //array of objects with multipe key value pairs plus correct answer and radio button click indicator
@@ -82,8 +80,13 @@ var unanswered = questions.length;
 //when class of .btn is clicked, execute run()
 $(".btn").on("click", run);
 
+$("#start-button").on("click", function(){
+    $("#start-button").hide();
+});
+
 //run() clears timer, sets setInterval to call countdown() every 1000 milliseconds
 function run() {
+    //prevents multiple clocks from running
     clearInterval(intervalId);
     intervalId = setInterval(countdown, 1000);
     //populates DOM with questions and answers from questions array above
@@ -117,7 +120,6 @@ $(document).on("click", ".answer", function () {
     var questionNum = $(this).attr("data-questionNumber");
     questionNum = parseInt(questionNum);
     if (questions[questionNum].clicked === false) {
-        console.log(this);
         console.log(val, questions[questionNum].correctAnswer);
 
         if (val === questions[questionNum].correctAnswer) {
@@ -158,8 +160,15 @@ function countdown() {
     //Decrease time by one.
     time--;
 
+    var timerDiv = $("<div>");
+    timerDiv.addClass("timer-area");
+
     //Show the number in the #timer-area tag.
-    $("#timer-area").html("<h2>" + time + "</h2>");
+    timerDiv.text(time);
+    $("#timer-holder").html(timerDiv);
+    
+    
+    
 
     //Once time hits zero, empty html container adds a "times up" line, and adds correct and incorrect values
     if (time === 0) {
