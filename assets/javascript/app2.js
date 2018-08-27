@@ -63,9 +63,9 @@ var questions = [
         clicked: false
     },
     {
-        question: "The Wasatch mountain range is named after a Ute Indian name meaning what?",
-        answers: ["low place in high mountain", "mountain of much water", "mountain near salt water"],
-        correctAnswer: "low place in high mountain",
+        question: "Compared to all the states in the US, how is Utah ranked by size?",
+        answers: ["8", "11", "15"],
+        correctAnswer: "11",
         clicked: false
     },
     {
