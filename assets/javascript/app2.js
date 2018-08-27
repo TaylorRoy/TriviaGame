@@ -1,7 +1,7 @@
 //!!!!!!!!!!!!!!!!!!!Global variables!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //global variables 
-var time = 1000;
+var time = 60;
 var correct = 0;
 var incorrect = 0;
 var intervalId;
@@ -80,7 +80,7 @@ var unanswered = questions.length;
 //when class of .btn is clicked, execute run()
 $(".btn").on("click", run);
 
-$("#start-button").on("click", function(){
+$("#start-button").on("click", function () {
     $("#start-button").hide();
 });
 
@@ -90,6 +90,8 @@ function run() {
     clearInterval(intervalId);
     intervalId = setInterval(countdown, 1000);
     //populates DOM with questions and answers from questions array above
+    //$("#question-area").css({background : 'url(./assets/images/utah_outline.jpg)  no-repeat center 60%'});
+    $("#question-area").css("background-image", "url('./assets/images/utah_outline.jpg')");
     addQuestionAnswer(questions);
     //adds a break between questions and done button
     $("#question-area").append("<br>");
@@ -100,13 +102,14 @@ function run() {
 
 //iterates through questions array above and dynamically adds them to page using jQuery.  Some critical keys are adding unique names for each group of options for answers, and adding values= text
 function addQuestionAnswer(questions) {
+    $("p").hide();
     var i;
     for (i = 0; i < questions.length; i++) {
 
         //adds questions from questions array above
         $("#question-area").append("<h2>" + questions[i].question + "</h2>");
 
-        //adds answers from positions 0,1,2 in questions array above
+        //adds radio button answers from positions 0,1,2 in questions array above
         $("#question-area").append("<input class='answer' id='" + questions[i].answers[0] + "' type='radio' name='question-" + i + "' data-questionNumber=" + i + " value='" + questions[i].answers[0] + "'>" + questions[i].answers[0]);
         $("#question-area").append("<input class='answer' id='" + questions[i].answers[1] + "' type='radio' name='question-" + i + "' data-questionNumber=" + i + " value='" + questions[i].answers[1] + "'>" + questions[i].answers[1]);
         $("#question-area").append("<input class='answer' id='" + questions[i].answers[2] + "' type='radio' name='question-" + i + "' data-questionNumber=" + i + " value='" + questions[i].answers[2] + "'>" + questions[i].answers[2]);
@@ -141,17 +144,26 @@ $(document).on("click", ".answer", function () {
 $(document).on("click", ".done-button", function () {
     stop();
     $(".container").empty();
-    $(".container-results").css({background : 'url(./assets/images/utah_outline.jpg)  no-repeat center'});
-     var results = $("<div>");
-     var breakDiv = $("<br>");
-     results.addClass("results");
-     $(".container-results").html("<h2>You're Fast!</h2>");
-     //$(".container-results").append(breakDiv);
-     $(".container-results").append("correct:" + correct + "<br>");
-     //$(".container-results").append(breakDiv);
-     $(".container-results").append("incorrect:" + incorrect + "<br>");
-     //$(".container-results").append(breakDiv);
-     $(".container-results").append("unanswered:" + unanswered);
+    $(".container-results").css({ background: 'url(./assets/images/utah_outline.jpg)  no-repeat center' });
+    var results = $("<div>");
+    var breakDiv = $("<br>");
+    results.addClass("results");
+    $(".container-results").html("<h2>You're Fast!</h2>");
+    //$(".container-results").append(breakDiv);
+    $(".container-results").append("correct:" + correct + "<br>");
+    //$(".container-results").append(breakDiv);
+    $(".container-results").append("incorrect:" + incorrect + "<br>");
+    //$(".container-results").append(breakDiv);
+    $(".container-results").append("unanswered:" + unanswered + "<br>");
+    $(".container-results").append("<br>");
+    if (correct < 5) {
+        $(".container-results").append("LOTS WRONG ANSWERS.<br>");
+        $(".container-results").append("YOU DON'T LOVE UTAH. GET OUT!");
+    }
+    if (correct > 5) {
+        $(".container-results").append("YOU GOT HALF OR MORE CORRECT.<br>");
+        $(".container-results").append("I GUESS YOU CAN STAY.");
+    }
 })
 
 //The countdown function.
@@ -164,11 +176,11 @@ function countdown() {
     timerDiv.addClass("timer-area");
 
     //Show the number in the #timer-area tag.
-    timerDiv.text(time);
+    timerDiv.text("Time:" + time);
     $("#timer-holder").html(timerDiv);
-    
-    
-    
+
+
+
 
     //Once time hits zero, empty html container adds a "times up" line, and adds correct and incorrect values
     if (time === 0) {
@@ -176,7 +188,7 @@ function countdown() {
         //run the stop function.
         stop();
         $(".container").empty();
-        $(".container-results").css({background : 'url(./assets/images/utah_outline.jpg)  no-repeat center'});
+        $(".container-results").css({ background: 'url(./assets/images/utah_outline.jpg)  no-repeat center' });
         var results = $("<div>");
         var breakDiv = $("<br>");
         results.addClass("results");
